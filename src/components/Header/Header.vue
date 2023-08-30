@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import Logo from '../Logo/Logo.vue'
 import IconAddress from '../icons/IconAddress.vue'
-import IconTelegram from '../icons/IconTelegram.vue';
-import IconWhatsApp from '../icons/IconWhatsApp.vue'
 import Navigation from '../Navigation/Navigation.vue'
-import { HEADER_SOCIALS } from './socials'
+import { HEADER_SOCIALS } from './constants'
 </script>
 
 <template>
@@ -21,13 +19,12 @@ import { HEADER_SOCIALS } from './socials'
             <i class="header__address-icon">
               <IconAddress />
             </i>
-            <p class="header__address-text">г. Ставрополь,<br>ул. Пушкина 272</p>
+            <p class="header__address-text">г. Ставрополь,<br />ул. Пушкина 272</p>
           </div>
           <ul class="header__socials">
-            <li v-for="{link, name} in HEADER_SOCIALS" class="header__socials-item">
-              <a class="header__socials-item-link" :href=link rel="noopener">
-                <IconTelegram v-if="name === 'telegram'"/>
-                <IconWhatsApp v-else-if="name === 'whatsapp'"/>
+            <li v-for="{ link, name, icon } in HEADER_SOCIALS" class="header__socials-item">
+              <a class="header__socials-item-link" :href="link" :key="name" rel="noopener">
+                <component :is="icon" />
               </a>
             </li>
           </ul>
@@ -45,84 +42,85 @@ import { HEADER_SOCIALS } from './socials'
 </template>
 
 <style lang="scss" scoped>
-  @import '@/styles/_vars.scss';
+@import '@/styles/_vars.scss';
 
-  .container {
-    max-width: 1588px;
-    margin: 0 auto;
+.container {
+  max-width: 1588px;
+  margin: 0 auto;
+}
+.header {
+  border-radius: 0px 0px 16px 16px;
+  border: 1px solid #f7f7f8;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(16px);
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
   }
-  .header {
-    border-radius: 0px 0px 16px 16px;
-    border: 1px solid #F7F7F8;
-    background: rgba(255, 255, 255, 0.85);
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.05);
-    backdrop-filter: blur(16px);
 
-    &__content {
+  &__contacts {
+    display: flex;
+    gap: 48px;
+  }
+
+  &__address {
+    display: flex;
+    align-items: center;
+    max-width: 240px;
+    gap: 16px;
+    font-size: 20px;
+    line-height: 24px;
+
+    &-icon {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 16px;
     }
+  }
 
-    &__contacts {
-      display: flex;
-      gap: 48px;
-    }
+  &__socials {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    list-style-type: none;
 
-    &__address {
-      display: flex;
-      align-items: center;
-      max-width: 240px;
-      gap: 16px;
-      font-size: 20px;
-      line-height: 24px;
-
-      &-icon {
-        display: flex;
-      }
-    }
-
-    &__socials {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      list-style-type: none;
-
-      &-item {
-        width: 48px;
-        height: 48px;
-        border-radius: 2px;
-        background: $secondaryColor;
-
-        &-link {
-          display: flex;
-          padding: 12px;
-        }
-      }
-    }
-
-    &__phone {
-      text-align: right;
-
-      &-number {
-        font-size: 20px;
-        line-height: 24px;
-        color: $gray;
-      }
+    &-item {
+      width: 48px;
+      height: 48px;
+      border-radius: 2px;
+      background: $secondaryColor;
 
       &-link {
-        font-family: 'Roboto', 'Arial', sans-serif;
-        font-size: 15px;
-        line-height: 20px;
-        color: $secondaryColor;
-        text-decoration: none;
+        display: flex;
+        padding: 12px;
       }
     }
+  }
 
-    &__navigation {
-      margin-top: 32px;
-      margin-bottom: 16px;
+  &__phone {
+    text-align: right;
+
+    &-number {
+      font-size: 20px;
+      line-height: 24px;
+      color: $gray;
+    }
+
+    &-link {
+      font-family: 'Roboto', 'Arial', sans-serif;
+      font-size: 15px;
+      line-height: 20px;
+      color: $secondaryColor;
+      text-decoration: underline;
     }
   }
+
+  &__navigation {
+    margin-top: 32px;
+    margin-bottom: 16px;
+  }
+}
 </style>
+./constants
