@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import Logo from '../Logo/Logo.vue'
-import IconAddress from './icons/IconAddress.vue'
-import IconWhatsApp from './icons/IconWhatsApp.vue'
+import IconAddress from '../icons/IconAddress.vue'
+import IconTelegram from '../icons/IconTelegram.vue';
+import IconWhatsApp from '../icons/IconWhatsApp.vue'
+import Navigation from '../Navigation/Navigation.vue'
+import { HEADER_SOCIALS } from './socials'
 </script>
 
 <template>
@@ -21,14 +24,10 @@ import IconWhatsApp from './icons/IconWhatsApp.vue'
             <p class="header__address-text">г. Ставрополь,<br>ул. Пушкина 272</p>
           </div>
           <ul class="header__socials">
-            <li class="header__socials-item">
-              <a class="header__socials-item-link" href="#" rel="noopener">
-                <img src="./img/telegram.svg">
-              </a>
-            </li>
-            <li class="header__socials-item">
-              <a class="header__socials-item-link" href="#" rel="noopener">
-                <IconWhatsApp />
+            <li v-for="{link, name} in HEADER_SOCIALS" class="header__socials-item">
+              <a class="header__socials-item-link" :href=link rel="noopener">
+                <IconTelegram v-if="name === 'telegram'"/>
+                <IconWhatsApp v-else-if="name === 'whatsapp'"/>
               </a>
             </li>
           </ul>
@@ -37,6 +36,9 @@ import IconWhatsApp from './icons/IconWhatsApp.vue'
             <a class="header__phone-link" href="tel:+7123456789">Перезвоните мне</a>
           </div>
         </div>
+      </div>
+      <div class="header__navigation">
+        <Navigation />
       </div>
     </div>
   </header>
@@ -57,10 +59,10 @@ import IconWhatsApp from './icons/IconWhatsApp.vue'
     backdrop-filter: blur(16px);
 
     &__content {
-      padding: 16px 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      margin-top: 16px;
     }
 
     &__contacts {
@@ -116,6 +118,11 @@ import IconWhatsApp from './icons/IconWhatsApp.vue'
         color: $secondaryColor;
         text-decoration: none;
       }
+    }
+
+    &__navigation {
+      margin-top: 32px;
+      margin-bottom: 16px;
     }
   }
 </style>
