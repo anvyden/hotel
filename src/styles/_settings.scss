@@ -1,0 +1,21 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: $mainFont;
+  font-size: $mainFontSize;
+  font-weight: 400;
+  color: $primaryColor;
+  line-height: 28px;
+}
+
+#root {
+  height: 100%;
+}
