@@ -22,8 +22,12 @@ import { HEADER_SOCIALS } from './constants'
             <p class="header__address-text">г. Ставрополь,<br />ул. Пушкина 272</p>
           </div>
           <ul class="header__socials">
-            <li v-for="{ link, name, icon } in HEADER_SOCIALS" class="header__socials-item">
-              <a class="header__socials-item-link" :href="link" :key="name" rel="noopener">
+            <li
+              v-for="{ link, name, icon } in HEADER_SOCIALS"
+              class="header__socials-item"
+              :key="name"
+            >
+              <a class="header__socials-item-link" :href="link" rel="noopener">
                 <component :is="icon" />
               </a>
             </li>
@@ -43,11 +47,8 @@ import { HEADER_SOCIALS } from './constants'
 
 <style lang="scss" scoped>
 @import '@/styles/_vars.scss';
+@import '@/styles/_layouts.scss';
 
-.container {
-  max-width: 1588px;
-  margin: 0 auto;
-}
 .header {
   border-radius: 0px 0px 16px 16px;
   border: 1px solid #f7f7f8;
