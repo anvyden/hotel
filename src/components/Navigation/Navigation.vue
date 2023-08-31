@@ -4,18 +4,17 @@ import { NAVIGATION_LIST } from './constants'
 
 const activeLink = ref(
   NAVIGATION_LIST.find((item) => item.text === 'О нас')?.text || NAVIGATION_LIST[0].text
-) 
+)
 </script>
 
 <template>
   <nav class="navigation">
     <ul class="navigation__list">
-      <li v-for="{ link, text } in NAVIGATION_LIST" class="navigation__item">
+      <li v-for="{ link, text } in NAVIGATION_LIST" class="navigation__item" :key="text">
         <a
           class="navigation__item-link"
           :href="link"
           :class="{ 'navigation__item-link_active': activeLink === text }"
-          :key="text"
           @click="activeLink = text"
         >
           {{ text }}
