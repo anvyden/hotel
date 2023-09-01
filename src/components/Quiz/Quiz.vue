@@ -16,7 +16,7 @@ const { id, questionNumber, question, answers } = currentQuestion
   <div class="quiz">
     <h1 class="quiz__heading">Рассчитайте стоимость вашего банкета</h1>
     <p class="quiz__description">
-      Ответьте на 5 вопросов и получите горку из шампанского в подарок
+      Ответьте на {{ QUIZ_QUESTIONS.length }} вопросов и получите горку из шампанского в подарок
     </p>
     <div class="quiz__content">
       <div class="quiz__quiz">
@@ -45,14 +45,14 @@ const { id, questionNumber, question, answers } = currentQuestion
             :type="'button'"
             :text="'Следующий вопрос'"
             :with-arrow="true"
-            @clicked="console.log(currentQuestionNumber++, currentQuestion)"
+            @clicked="currentQuestionNumber += 1"
           />
         </div>
       </div>
       <div class="quiz__additional-block">
         <img class="quiz__additional-block-img" src="@/assets/img/bottle.png" />
         <p class="quiz__additional-block-text">
-          Ответьте на 5 вопросов и получите горку из шампанского в подарок
+          Ответьте на {{ QUIZ_QUESTIONS.length }} вопросов и получите горку из шампанского в подарок
         </p>
         <Button
           :type="'button'"
