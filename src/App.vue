@@ -2,6 +2,7 @@
 import Header from './components/Header/Header.vue'
 import Quiz from './components/Quiz/Quiz.vue'
 import Halls from './components/Halls/Halls.vue'
+import Footer from './components/Footer/Footer.vue'
 </script>
 
 <template>
@@ -16,6 +17,7 @@ import Halls from './components/Halls/Halls.vue'
       </div>
     </div>
   </main>
+  <Footer />
 </template>
 
 <style lang="scss" scoped>
@@ -24,12 +26,10 @@ import Halls from './components/Halls/Halls.vue'
 @import '@/styles/_layouts.scss';
 
 .main {
-  &__quiz {
-    margin-top: rem(24);
-  }
+  padding: rem(24) 0 rem(32) 0;
 
-  &__halls {
-    margin-top: rem(32);
+  &__quiz {
+    margin-bottom: rem(32);
   }
 }
 </style>

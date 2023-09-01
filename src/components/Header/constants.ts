@@ -1,9 +1,8 @@
-import IconTelegram from '../icons/IconTelegram.vue'
-import IconWhatsApp from '../icons/IconWhatsApp.vue'
+import type { Social } from '@/types/SocialType'
 
-const HEADER_SOCIALS = [
-  { link: '#', name: 'telegram', icon: IconTelegram },
-  { link: '#', name: 'whatsapp', icon: IconWhatsApp }
+const HEADER_SOCIALS: Social = [
+  { link: '#', name: 'telegram', icon: 'telegram' },
+  { link: '#', name: 'whatsapp', icon: 'whatsapp' }
 ]
 
 export { HEADER_SOCIALS }

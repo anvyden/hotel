@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Logo from '../Logo/Logo.vue'
 import IconAddress from '../icons/IconAddress.vue'
+import Social from '../Social/Social.vue'
 import Navigation from '../Navigation/Navigation.vue'
 import { HEADER_SOCIALS } from './constants'
 </script>
@@ -11,7 +12,7 @@ import { HEADER_SOCIALS } from './constants'
       <div class="header__content">
         <div class="header__logo">
           <a class="header__logo-link" href="#" rel="noopener">
-            <Logo />
+            <Logo :color="'#18191b'" />
           </a>
         </div>
         <div class="header__contacts">
@@ -22,15 +23,12 @@ import { HEADER_SOCIALS } from './constants'
             <p class="header__address-text">г. Ставрополь,<br />ул. Пушкина 272</p>
           </div>
           <ul class="header__socials">
-            <li
+            <Social
               v-for="{ link, name, icon } in HEADER_SOCIALS"
-              class="header__socials-item"
+              :link="link"
+              :icon="icon"
               :key="name"
-            >
-              <a class="header__socials-item-link" :href="link" rel="noopener">
-                <component :is="icon" />
-              </a>
-            </li>
+            />
           </ul>
           <div class="header__phone">
             <p class="header__phone-number">+7 (123) 45-67-89</p>
@@ -87,18 +85,6 @@ import { HEADER_SOCIALS } from './constants'
     align-items: center;
     gap: rem(8);
     list-style-type: none;
-
-    &-item {
-      width: 48px;
-      height: 48px;
-      border-radius: 2px;
-      background: $secondaryColor;
-
-      &-link {
-        display: flex;
-        padding: 12px;
-      }
-    }
   }
 
   &__phone {

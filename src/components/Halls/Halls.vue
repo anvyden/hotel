@@ -37,7 +37,7 @@ const currentHallOptions = HALLS.find((hall) => hall.text === currentHall.value)
         v-for="{ id, text } in HALLS"
         :key="id"
         :class="{ 'halls__pagination-item--active': text === currentHall }"
-        @click="currentHall = $event.target.textContent"
+        @click="currentHall = $event.target?.textContent"
       >
         {{ text }}
       </li>
