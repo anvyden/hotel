@@ -27,27 +27,28 @@ const emit = defineEmits(['clicked'])
 
 <style lang="scss" scoped>
 @import '@/styles/_vars.scss';
+@import '@/styles/_mixins.scss';
 
 .button {
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 14px 32px;
-  font-family: Roboto, Arial, sans-serif;
-  font-size: 15px;
-  line-height: 20px;
+  gap: rem(16);
+  padding: rem(14) rem(32);
   border: none;
-  border-radius: 4px;
+  border-radius: $controlsBorderRadius;
   background: $secondaryColor;
-  color: #fff;
   cursor: pointer;
 
+  @include font-roboto;
+
+  color: $white;
+
   &--with-arrow {
-    padding: 14px 24px 14px 32px;
+    padding: rem(14) rem(24) rem(14) rem(32);
   }
 
   &--without-fill {
-    background: #fff;
+    background: $white;
     border: 2px solid $secondaryColor;
     color: $secondaryColor;
   }

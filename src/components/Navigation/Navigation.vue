@@ -26,9 +26,10 @@ const activeLink = ref(
 
 <style lang="scss" scoped>
 @import '@/styles/_vars.scss';
+@import '@/styles/_mixins.scss';
 
 .navigation {
-  padding: 0 135px;
+  padding: 0 rem(135);
 
   &__list {
     display: flex;
@@ -53,11 +54,11 @@ const activeLink = ref(
         &::after {
           content: '';
           position: absolute;
-          bottom: -16px;
+          bottom: rem(-16);
           left: 0;
-          width: calc(100% + 32px);
+          width: calc(100% + rem(32));
           height: 2px;
-          transform: translateX(-16px);
+          transform: translateX(rem(-16));
           background: $secondaryColor;
         }
       }
@@ -65,4 +66,3 @@ const activeLink = ref(
   }
 }
 </style>
-./constants

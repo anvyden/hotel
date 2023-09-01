@@ -1,4 +1,7 @@
+@import '@/styles/_vars.scss';
+@import '@/styles/_mixins.scss';
+
 .container {
-  max-width: 1588px;
+  max-width: rem(1588);
   margin: 0 auto;
 }

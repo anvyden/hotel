@@ -29,25 +29,29 @@ defineProps<Props>()
 </template>
 
 <style lang="scss" scoped>
+@import '@/styles/_vars.scss';
+@import '@/styles/_mixins.scss';
 .booking-card {
-  max-width: 536px;
-  padding: 40px 40px 48px 40px;
-  background: #fff;
-  box-shadow: 0px 8px 16px 0px rgba(34, 35, 36, 0.1);
+  max-width: rem(536);
+  padding: rem(40) rem(40) rem(48) rem(40);
+  background: $white;
+  box-shadow: $mainBoxShadow;
 
   &__title {
-    margin-bottom: 24px;
+    margin-bottom: rem(24);
+
+    @include font-h3;
   }
 
   &__hall {
     &-options {
-      margin-bottom: 48px;
+      margin-bottom: rem(48);
       list-style-type: none;
     }
 
     &-option {
       display: flex;
-      gap: 40px;
+      gap: rem(40);
       padding: 8px 0;
 
       &:first-child {
@@ -55,7 +59,7 @@ defineProps<Props>()
       }
 
       &:not(:first-child) {
-        border-top: 2px solid #e9eaec;
+        border-top: 2px solid $platinum;
       }
 
       &:last-child {
@@ -64,19 +68,19 @@ defineProps<Props>()
 
       &-name {
         flex-basis: 50%;
-        color: #acada5;
+        color: $lightGray;
       }
 
       &-value {
         flex-basis: 50%;
-        color: #18191b;
+        color: $primaryColor;
       }
     }
   }
 
   &__buttons {
     display: flex;
-    gap: 16px;
+    gap: rem(16);
   }
 }
 </style>

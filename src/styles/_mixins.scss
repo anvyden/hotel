@@ -1,0 +1,48 @@
+@mixin font-h2() {
+  font-family: P052, Arial, sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 48px;
+  color: $primaryColor;
+}
+
+@mixin font-h3() {
+  font-family: P052, Arial, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 32px;
+  color: $primaryColor;
+}
+
+@mixin font-h4() {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 32px;
+}
+
+@mixin font-roboto() {
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  color: $secondaryColor;
+}
+
+@mixin font-contacts() {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  color: $gray;
+}
+
+@function rem($pixels, $context: $mainFontSize) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+
+  @return calc($pixels / $context) * 1rem;
+}

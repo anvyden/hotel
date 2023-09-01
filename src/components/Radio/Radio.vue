@@ -17,14 +17,15 @@ defineProps<Props>()
 
 <style lang="scss" scoped>
 @import '@/styles/_vars.scss';
+@import '@/styles/_mixins.scss';
 
 .radio {
   position: relative;
   padding: 12px 32px 12px 12px;
   // border: 1px solid $secondaryColor;
-  border-radius: 4px;
-  background: #fff;
-  box-shadow: 0px 8px 16px 0px rgba(34, 35, 36, 0.1);
+  border-radius: $controlsBorderRadius;
+  background: $white;
+  box-shadow: $mainBoxShadow;
 
   &__input {
     position: absolute;
@@ -33,6 +34,8 @@ defineProps<Props>()
 
     &:checked + .radio {
       &__text {
+        color: #000;
+
         &::after {
           display: block;
         }
@@ -45,7 +48,10 @@ defineProps<Props>()
   }
 
   &__text {
-    margin-left: 40px;
+    margin-left: rem(40);
+
+    color: $middleGray;
+
     &::before {
       content: '';
       position: absolute;
@@ -54,7 +60,7 @@ defineProps<Props>()
       transform: translateY(-50%);
       width: 24px;
       height: 24px;
-      border: 3px solid #acada5;
+      border: 3px solid $lightGray;
       border-radius: 50%;
     }
 

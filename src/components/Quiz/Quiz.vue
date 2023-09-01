@@ -14,7 +14,7 @@ const { id, questionNumber, question, answers } = currentQuestion
 
 <template>
   <div class="quiz">
-    <h1 class="quiz__heading">Рассчитайте стоимость вашего банкета</h1>
+    <h1 class="quiz__title">Рассчитайте стоимость вашего банкета</h1>
     <p class="quiz__description">
       Ответьте на {{ QUIZ_QUESTIONS.length }} вопросов и получите горку из шампанского в подарок
     </p>
@@ -33,7 +33,7 @@ const { id, questionNumber, question, answers } = currentQuestion
           </div>
         </div>
         <div class="quiz__quiz-question">
-          <p class="quiz__quiz-question-text">{{ question }}</p>
+          <h4 class="quiz__quiz-question-text">{{ question }}</h4>
           <ul class="quiz__quiz-question-answers-list">
             <li v-for="answer in answers" class="quiz__quiz-question-answer" :key="answer">
               <Radio :name="id" :text="answer" :is-checked="answers.indexOf(answer) === 0" />
@@ -51,9 +51,9 @@ const { id, questionNumber, question, answers } = currentQuestion
       </div>
       <div class="quiz__additional-block">
         <img class="quiz__additional-block-img" src="@/assets/img/bottle.png" />
-        <p class="quiz__additional-block-text">
+        <h4 class="quiz__additional-block-text">
           Ответьте на {{ QUIZ_QUESTIONS.length }} вопросов и получите горку из шампанского в подарок
-        </p>
+        </h4>
         <Button
           :type="'button'"
           :text="'Начать'"
@@ -67,10 +67,13 @@ const { id, questionNumber, question, answers } = currentQuestion
 
 <style lang="scss" scoped>
 @import '@/styles/_vars.scss';
+@import '@/styles/_mixins.scss';
 
 .quiz {
-  &__heading {
-    margin-bottom: 13px;
+  &__title {
+    margin-bottom: rem(13);
+
+    @include font-h2;
   }
 
   &__description {
@@ -79,20 +82,22 @@ const { id, questionNumber, question, answers } = currentQuestion
 
   &__content {
     display: flex;
-    gap: 20px;
+    gap: rem(20);
   }
 
   &__quiz {
-    padding: 32px 40px;
-    border-radius: 16px;
-    background: #f7f7f8;
+    width: 100%;
+    max-width: rem(918);
+    padding: rem(32) rem(40);
+    border-radius: $mainBorderRadius;
+    background: $lightPlatinum;
 
     &-counter {
-      margin-bottom: 32px;
+      margin-bottom: rem(32);
 
       &-text {
         color: $gray;
-        margin-bottom: 8px;
+        margin-bottom: rem(8);
       }
 
       &-progress {
@@ -101,7 +106,7 @@ const { id, questionNumber, question, answers } = currentQuestion
         &-empty {
           height: 4px;
           width: 100%;
-          background: #fff;
+          background: $white;
         }
 
         &-filled {
@@ -116,41 +121,44 @@ const { id, questionNumber, question, answers } = currentQuestion
     }
 
     &-question {
-      margin-bottom: 40px;
+      margin-bottom: rem(40);
 
       &-answers-list {
         display: flex;
-        gap: 16px;
+        gap: rem(16);
         list-style-type: none;
       }
 
       &-text {
-        margin-bottom: 24px;
+        margin-bottom: rem(24);
+        color: $gray;
+
+        @include font-h4;
       }
     }
 
     &-controls {
       position: relative;
-      padding: 31px 0 32px 0;
+      padding: rem(31) 0 rem(32) 0;
 
       &::before {
         content: '';
         position: absolute;
         top: 1px;
-        left: calc(0px - 40px);
-        width: calc(100% + 80px);
+        left: calc(0px - rem(40));
+        width: calc(100% + rem(80));
         height: 1px;
-        background: #e9eaec;
+        background: $platinum;
       }
 
       &::after {
         content: '';
         position: absolute;
         top: 1px;
-        left: calc(0px - 40px);
-        width: calc(100% + 80px);
+        left: calc(0px - rem(40));
+        width: calc(100% + rem(80));
         height: 1px;
-        background: #fff;
+        background: $white;
       }
     }
   }
@@ -160,7 +168,7 @@ const { id, questionNumber, question, answers } = currentQuestion
     align-items: end;
     position: relative;
     width: 100%;
-    max-width: 650px;
+    max-width: rem(650);
     background: url('@/assets/img/quiz-background.png') no-repeat center;
 
     &-img {
@@ -170,12 +178,12 @@ const { id, questionNumber, question, answers } = currentQuestion
     }
 
     &-text {
-      max-width: 476px;
-      margin-left: 40px;
-      margin-bottom: 32px;
-      font-size: 24px;
-      line-height: 32px;
+      max-width: rem(476);
+      margin-left: rem(40);
+      margin-bottom: rem(32);
       z-index: 1;
+
+      @include font-h4;
     }
 
     &-button {

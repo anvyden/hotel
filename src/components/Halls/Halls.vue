@@ -52,9 +52,14 @@ const currentHallOptions = HALLS.find((hall) => hall.text === currentHall.value)
 </template>
 
 <style lang="scss" scoped>
+@import '@/styles/_vars.scss';
+@import '@/styles/_mixins.scss';
+
 .halls {
   &__title {
-    margin-bottom: 16px;
+    margin-bottom: rem(16);
+
+    @include font-h2;
   }
 
   &__pagination {
@@ -65,10 +70,15 @@ const currentHallOptions = HALLS.find((hall) => hall.text === currentHall.value)
     &-item {
       padding: 14px 32px;
       border-radius: 16px 16px 0 0;
-      background: #e9eaec;
+      background: $platinum;
+
+      @include font-roboto;
+
+      color: $middleGray;
 
       &--active {
-        background: #f7f7f8;
+        background: $lightPlatinum;
+        color: $primaryColor;
       }
     }
   }
@@ -77,8 +87,8 @@ const currentHallOptions = HALLS.find((hall) => hall.text === currentHall.value)
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 56px 11px 231px;
-    background: #f7f7f8;
+    padding: rem(12) rem(56) rem(11) rem(231);
+    background: $lightPlatinum;
   }
 }
 </style>

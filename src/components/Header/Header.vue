@@ -47,34 +47,35 @@ import { HEADER_SOCIALS } from './constants'
 
 <style lang="scss" scoped>
 @import '@/styles/_vars.scss';
+@import '@/styles/_mixins.scss';
 @import '@/styles/_layouts.scss';
 
 .header {
   border-radius: 0px 0px 16px 16px;
-  border: 1px solid #f7f7f8;
+  border: 1px solid $lightPlatinum;
   background: rgba(255, 255, 255, 0.85);
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: $headerBoxShadow;
   backdrop-filter: blur(16px);
 
   &__content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 16px;
+    margin-top: rem(16);
   }
 
   &__contacts {
     display: flex;
-    gap: 48px;
+    gap: rem(48);
   }
 
   &__address {
     display: flex;
     align-items: center;
-    max-width: 240px;
-    gap: 16px;
-    font-size: 20px;
-    line-height: 24px;
+    max-width: rem(240);
+    gap: rem(16);
+
+    @include font-contacts;
 
     &-icon {
       display: flex;
@@ -84,7 +85,7 @@ import { HEADER_SOCIALS } from './constants'
   &__socials {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: rem(8);
     list-style-type: none;
 
     &-item {
@@ -104,24 +105,19 @@ import { HEADER_SOCIALS } from './constants'
     text-align: right;
 
     &-number {
-      font-size: 20px;
-      line-height: 24px;
-      color: $gray;
+      @include font-contacts;
     }
 
     &-link {
-      font-family: 'Roboto', 'Arial', sans-serif;
-      font-size: 15px;
-      line-height: 20px;
-      color: $secondaryColor;
       text-decoration: underline;
+
+      @include font-roboto;
     }
   }
 
   &__navigation {
-    margin-top: 32px;
-    margin-bottom: 16px;
+    margin-top: rem(32);
+    margin-bottom: rem(16);
   }
 }
 </style>
-./constants

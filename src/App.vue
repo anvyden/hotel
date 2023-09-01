@@ -19,15 +19,17 @@ import Halls from './components/Halls/Halls.vue'
 </template>
 
 <style lang="scss" scoped>
+@import '@/styles/_vars.scss';
+@import '@/styles/_mixins.scss';
 @import '@/styles/_layouts.scss';
 
 .main {
   &__quiz {
-    margin-top: 24px;
+    margin-top: rem(24);
   }
 
   &__halls {
-    margin-top: 32px;
+    margin-top: rem(32);
   }
 }
 </style>
