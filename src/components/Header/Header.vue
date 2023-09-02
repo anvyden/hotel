@@ -20,7 +20,7 @@ import { HEADER_SOCIALS } from './constants'
             <i class="header__address-icon">
               <IconAddress />
             </i>
-            <p class="header__address-text">г. Ставрополь,<br />ул. Пушкина 272</p>
+            <p class="header__address-text">г. Ставрополь, ул.&nbsp;Пушкина 272</p>
           </div>
           <ul class="header__socials">
             <Social
@@ -58,32 +58,31 @@ import { HEADER_SOCIALS } from './constants'
   &__content {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-top: rem(16);
+    margin-top: rem(12);
   }
 
   &__contacts {
     display: flex;
-    gap: rem(48);
   }
 
   &__address {
     display: flex;
-    align-items: center;
     max-width: rem(240);
     gap: rem(16);
+    margin-right: rem(49);
 
     @include font-contacts;
 
     &-icon {
       display: flex;
+      margin-top: rem(12);
     }
   }
 
   &__socials {
     display: flex;
-    align-items: center;
     gap: rem(8);
+    margin-right: rem(50);
     list-style-type: none;
   }
 
@@ -102,7 +101,7 @@ import { HEADER_SOCIALS } from './constants'
   }
 
   &__navigation {
-    margin-top: rem(32);
+    margin-top: rem(23);
     margin-bottom: rem(16);
   }
 }

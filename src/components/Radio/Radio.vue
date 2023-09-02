@@ -21,11 +21,12 @@ defineProps<Props>()
 
 .radio {
   position: relative;
-  padding: 12px 32px 12px 12px;
+  padding: 15px 32px 15px 12px;
   // border: 1px solid $secondaryColor;
   border-radius: $controlsBorderRadius;
   background: $white;
   box-shadow: $mainBoxShadow;
+  cursor: pointer;
 
   &__input {
     position: absolute;
@@ -56,11 +57,11 @@ defineProps<Props>()
       content: '';
       position: absolute;
       top: 50%;
-      left: 12px;
+      left: 16px;
       transform: translateY(-50%);
-      width: 24px;
-      height: 24px;
-      border: 3px solid $lightGray;
+      width: 16px;
+      height: 16px;
+      border: 2px solid $lightGray;
       border-radius: 50%;
     }
 
@@ -68,11 +69,11 @@ defineProps<Props>()
       content: '';
       position: absolute;
       top: 50%;
-      left: 18px;
+      left: 21px;
       transform: translateY(-50%);
       display: none;
-      width: 12px;
-      height: 12px;
+      width: 6px;
+      height: 6px;
       background: $secondaryColor;
       border-radius: 50%;
     }

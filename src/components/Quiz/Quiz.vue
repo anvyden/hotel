@@ -52,7 +52,8 @@ const { id, questionNumber, question, answers } = currentQuestion
       <div class="quiz__additional-block">
         <img class="quiz__additional-block-img" src="@/assets/img/bottle.png" />
         <h4 class="quiz__additional-block-text">
-          Ответьте на {{ QUIZ_QUESTIONS.length }} вопросов и получите горку из шампанского в подарок
+          Ответьте на {{ QUIZ_QUESTIONS.length }} вопросов и получите горку из&nbsp; шампанского в
+          подарок
         </h4>
         <Button
           :type="'button'"
@@ -71,7 +72,7 @@ const { id, questionNumber, question, answers } = currentQuestion
 
 .quiz {
   &__title {
-    margin-bottom: rem(13);
+    margin-bottom: rem(20);
 
     @include font-h2;
   }
@@ -93,7 +94,7 @@ const { id, questionNumber, question, answers } = currentQuestion
     background: $lightPlatinum;
 
     &-counter {
-      margin-bottom: rem(32);
+      margin-bottom: rem(33);
 
       &-text {
         color: $gray;
@@ -125,12 +126,12 @@ const { id, questionNumber, question, answers } = currentQuestion
 
       &-answers-list {
         display: flex;
-        gap: rem(16);
+        gap: rem(17);
         list-style-type: none;
       }
 
       &-text {
-        margin-bottom: rem(24);
+        margin-bottom: rem(35);
         color: $gray;
 
         @include font-h4;
@@ -139,7 +140,7 @@ const { id, questionNumber, question, answers } = currentQuestion
 
     &-controls {
       position: relative;
-      padding: rem(31) 0 rem(32) 0;
+      padding-top: rem(45);
 
       &::before {
         content: '';

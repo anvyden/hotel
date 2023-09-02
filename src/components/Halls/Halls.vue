@@ -57,7 +57,7 @@ const currentHallOptions = HALLS.find((hall) => hall.text === currentHall.value)
 
 .halls {
   &__title {
-    margin-bottom: rem(16);
+    margin-bottom: rem(24);
 
     @include font-h2;
   }
@@ -68,9 +68,11 @@ const currentHallOptions = HALLS.find((hall) => hall.text === currentHall.value)
     list-style-type: none;
 
     &-item {
-      padding: 14px 32px;
+      padding: 16px 32px;
       border-radius: 16px 16px 0 0;
       background: $platinum;
+      cursor: pointer;
+      text-transform: capitalize;
 
       @include font-roboto;
 
@@ -87,8 +89,9 @@ const currentHallOptions = HALLS.find((hall) => hall.text === currentHall.value)
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: rem(12) rem(56) rem(11) rem(231);
+    padding: rem(11) rem(56) rem(11) rem(231);
     background: $lightPlatinum;
+    border-radius: 0px 16px 16px 16px;
   }
 }
 </style>

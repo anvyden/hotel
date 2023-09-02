@@ -33,19 +33,20 @@ defineProps<Props>()
 @import '@/styles/_mixins.scss';
 .booking-card {
   max-width: rem(536);
-  padding: rem(40) rem(40) rem(48) rem(40);
+  padding: rem(34) rem(40) rem(48) rem(40);
   background: $white;
   box-shadow: $mainBoxShadow;
+  border-radius: $mainBorderRadius;
 
   &__title {
-    margin-bottom: rem(24);
+    margin-bottom: rem(30);
 
     @include font-h3;
   }
 
   &__hall {
     &-options {
-      margin-bottom: rem(48);
+      margin-bottom: rem(31);
       list-style-type: none;
     }
 
@@ -67,12 +68,12 @@ defineProps<Props>()
       }
 
       &-name {
-        flex-basis: 50%;
+        flex-basis: 39%;
         color: $lightGray;
       }
 
       &-value {
-        flex-basis: 50%;
+        flex-basis: 61%;
         color: $primaryColor;
       }
     }
@@ -80,7 +81,7 @@ defineProps<Props>()
 
   &__buttons {
     display: flex;
-    gap: rem(16);
+    gap: rem(15);
   }
 }
 </style>

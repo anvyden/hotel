@@ -26,10 +26,10 @@ import Footer from './components/Footer/Footer.vue'
 @import '@/styles/_layouts.scss';
 
 .main {
-  padding: rem(24) 0 rem(32) 0;
+  padding: rem(16) 0 rem(32) 0;
 
   &__quiz {
-    margin-bottom: rem(32);
+    margin-bottom: rem(25);
   }
 }
 </style>

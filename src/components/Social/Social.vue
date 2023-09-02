@@ -9,6 +9,7 @@ type Props = {
   icon: 'telegram' | 'whatsapp' | 'facebook' | 'vk'
   hasGrayFill?: boolean
   hasRoundedBorders?: boolean
+  size?: 'small'
 }
 
 const SOCIALS_ICONS = {
@@ -26,7 +27,8 @@ defineProps<Props>()
     class="social"
     :class="{
       'social--fill-gray': hasGrayFill,
-      'social--rounded-borders': hasRoundedBorders
+      'social--rounded-borders': hasRoundedBorders,
+      'social--size-small': size === 'small'
     }"
   >
     <a class="social__link" :href="link" rel="noopener">
@@ -49,6 +51,17 @@ defineProps<Props>()
 
   &--rounded-borders {
     border-radius: $mainBorderRadius;
+  }
+
+  &--size-small {
+    width: 52px;
+    height: 52px;
+
+    .social {
+      &__link {
+        padding: 14px;
+      }
+    }
   }
 
   &__link {

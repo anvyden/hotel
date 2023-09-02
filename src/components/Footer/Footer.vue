@@ -23,6 +23,7 @@ import { FOOTER_SOCIALS } from './constants'
               :key="name"
               :has-gray-fill="true"
               :has-rounded-borders="true"
+              :size="'small'"
             />
           </ul>
         </div>
@@ -40,7 +41,7 @@ import { FOOTER_SOCIALS } from './constants'
 @import '@/styles/_layouts.scss';
 
 .footer {
-  padding: rem(48) 0 0 0;
+  padding-top: rem(48);
   background: $gray;
   border-radius: 20px 20px 0px 0px;
 
@@ -58,6 +59,8 @@ import { FOOTER_SOCIALS } from './constants'
   }
 
   &__contacts {
+    margin-right: rem(52);
+
     &-text {
       margin-bottom: rem(16);
 
