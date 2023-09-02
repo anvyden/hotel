@@ -4,12 +4,8 @@ import Button from '../Button/Button.vue'
 import { ref } from 'vue'
 import { QUIZ_QUESTIONS } from './constants'
 
-const currentQuestionNumber = ref(1)
-const currentQuestion = QUIZ_QUESTIONS[currentQuestionNumber.value - 1]
-
-const quizCounterProgressFilled = `${(currentQuestionNumber.value / QUIZ_QUESTIONS.length) * 100}%`
-
-const { id, questionNumber, question, answers } = currentQuestion
+const currentQuestion = ref(QUIZ_QUESTIONS[0])
+const quizCompeleted = ref(false)
 </script>
 
 <template>
@@ -20,33 +16,50 @@ const { id, questionNumber, question, answers } = currentQuestion
     </p>
     <div class="quiz__content">
       <div class="quiz__quiz">
-        <div class="quiz__quiz-counter">
-          <p class="quiz__quiz-counter-text">
-            Вопрос {{ questionNumber }} из {{ QUIZ_QUESTIONS.length }}
-          </p>
-          <div class="quiz__quiz-counter-progress">
-            <div class="quiz__quiz-counter-progress-empty"></div>
-            <div
-              class="quiz__quiz-counter-progress-filled"
-              :style="{ width: quizCounterProgressFilled }"
-            ></div>
+        <div v-if="!quizCompeleted" class="quiz__quiz-content">
+          <div class="quiz__quiz-counter">
+            <p class="quiz__quiz-counter-text">
+              Вопрос {{ currentQuestion.questionNumber }} из {{ QUIZ_QUESTIONS.length }}
+            </p>
+            <div class="quiz__quiz-counter-progress">
+              <div class="quiz__quiz-counter-progress-empty"></div>
+              <div
+                class="quiz__quiz-counter-progress-filled"
+                :style="{
+                  width: `${(currentQuestion.questionNumber / QUIZ_QUESTIONS.length) * 100}%`
+                }"
+              ></div>
+            </div>
+          </div>
+          <div class="quiz__quiz-question">
+            <h4 class="quiz__quiz-question-text">{{ currentQuestion.question }}</h4>
+            <ul class="quiz__quiz-question-answers-list">
+              <li
+                v-for="answer in currentQuestion.answers"
+                class="quiz__quiz-question-answer"
+                :key="answer"
+              >
+                <Radio
+                  :name="currentQuestion.id"
+                  :text="answer"
+                  :is-checked="currentQuestion.answers.indexOf(answer) === 0"
+                />
+              </li>
+            </ul>
+          </div>
+          <div class="quiz__quiz-controls">
+            <Button
+              v-if="currentQuestion.questionNumber !== QUIZ_QUESTIONS.length"
+              :type="'button'"
+              :text="'Следующий вопрос'"
+              :with-arrow="true"
+              @clicked="currentQuestion = QUIZ_QUESTIONS[currentQuestion.questionNumber - 1 + 1]"
+            />
+            <Button v-else :type="'button'" :text="'Завершить'" @clicked="quizCompeleted = true" />
           </div>
         </div>
-        <div class="quiz__quiz-question">
-          <h4 class="quiz__quiz-question-text">{{ question }}</h4>
-          <ul class="quiz__quiz-question-answers-list">
-            <li v-for="answer in answers" class="quiz__quiz-question-answer" :key="answer">
-              <Radio :name="id" :text="answer" :is-checked="answers.indexOf(answer) === 0" />
-            </li>
-          </ul>
-        </div>
-        <div class="quiz__quiz-controls">
-          <Button
-            :type="'button'"
-            :text="'Следующий вопрос'"
-            :with-arrow="true"
-            @clicked="currentQuestionNumber += 1"
-          />
+        <div v-else class="quiz__compeleted">
+          <p class="quiz__completed-text">Опрос завершен</p>
         </div>
       </div>
       <div class="quiz__additional-block">
@@ -89,9 +102,12 @@ const { id, questionNumber, question, answers } = currentQuestion
   &__quiz {
     width: 100%;
     max-width: rem(918);
-    padding: rem(32) rem(40);
     border-radius: $mainBorderRadius;
     background: $lightPlatinum;
+
+    &-content {
+      padding: rem(32) rem(40);
+    }
 
     &-counter {
       margin-bottom: rem(33);
@@ -162,6 +178,11 @@ const { id, questionNumber, question, answers } = currentQuestion
         background: $white;
       }
     }
+  }
+
+  &__compeleted {
+    text-align: center;
+    margin: rem(170) 0;
   }
 
   &__additional-block {

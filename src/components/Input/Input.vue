@@ -7,6 +7,11 @@ type Props = {
 }
 
 defineProps<Props>()
+
+const getValue = ({ target }: Event) => {
+  if (!(target instanceof HTMLInputElement)) return
+  return target.value
+}
 </script>
 
 <template>
@@ -17,7 +22,7 @@ defineProps<Props>()
       :type="type || 'text'"
       :placeholder="placeholder"
       :value="modelValue"
-      @input="$emit('update:modelValue', $event.target?.value)"
+      @input="$emit('update:modelValue', getValue($event))"
     />
   </div>
 </template>

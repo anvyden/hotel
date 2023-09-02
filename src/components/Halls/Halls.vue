@@ -2,7 +2,7 @@
 import BookingCard from '../BookingCard/BookingCard.vue'
 import { ref } from 'vue'
 
-const currentHall = ref('Зал первый')
+// const currentHall = ref('Зал первый')
 
 const HALLS = [
   {
@@ -25,9 +25,14 @@ const HALLS = [
   }
 ]
 
-const currentHallOptions = HALLS.find((hall) => hall.text === currentHall.value)?.options
+const currentHall = ref(HALLS[0])
 
 const emit = defineEmits(['openModal'])
+
+const findHall = ({ target }: MouseEvent) => {
+  if (!(target instanceof HTMLElement)) return
+  return HALLS.find((hall) => hall.text === target?.textContent)
+}
 </script>
 
 <template>
@@ -38,8 +43,8 @@ const emit = defineEmits(['openModal'])
         class="halls__pagination-item"
         v-for="{ id, text } in HALLS"
         :key="id"
-        :class="{ 'halls__pagination-item--active': text === currentHall }"
-        @click="currentHall = $event.target?.textContent"
+        :class="{ 'halls__pagination-item--active': text === currentHall.text }"
+        @click="currentHall = findHall($event) || HALLS[0]"
       >
         {{ text }}
       </li>
@@ -47,7 +52,7 @@ const emit = defineEmits(['openModal'])
     <div class="halls__hall">
       <img class="halls__hall-img" src="@/assets/img/hall-plan-1.jpg" />
       <div class="halls__card">
-        <BookingCard :options="currentHallOptions" @open-modal="emit('openModal', true)" />
+        <BookingCard :options="currentHall.options" @open-modal="emit('openModal', true)" />
       </div>
     </div>
   </section>
