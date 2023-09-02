@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import Button from '../Button/Button.vue'
+import Input from '../Input/Input.vue'
 import IconClose from '../icons/IconClose.vue'
 
 type Props = {
@@ -31,12 +32,14 @@ const emit = defineEmits(['closeModal'])
       <div class="modal__form">
         <form v-on:submit.prevent class="modal__form">
           <div class="modal__form-name">
-            <p class="modal__form-name-title">Ваше имя</p>
-            <input class="modal__form-name-input" />
+            <Input :type="'text'" :title="'Ваше имя'" :placeholder="'Введите ваше имя'" />
           </div>
           <div class="modal__form-phone">
-            <p class="modal__form-phone-title">Ваш номер телефона</p>
-            <input class="modal__form-phone-input" />
+            <Input
+              :type="'text'"
+              :title="'Ваш номер телефона'"
+              :placeholder="'+7 (___) ___-__-__'"
+            />
           </div>
           <Button :type="'submit'" :text="'Забронировать'" @click="emit('closeModal', false)" />
         </form>
@@ -62,7 +65,6 @@ const emit = defineEmits(['closeModal'])
   display: none;
 
   &__backdrop {
-    // position: absolute;
     width: 100%;
     height: 100%;
     background: $primaryColor;
@@ -125,62 +127,13 @@ const emit = defineEmits(['closeModal'])
 
   &__form {
     flex-basis: 42%;
-    // margin-top: 0px;
 
     &-name {
       margin-bottom: 16px;
-
-      &-title {
-        margin-bottom: 5px;
-        font-family: Roboto, Arial, sans-serif;
-        font-size: 12px;
-        line-height: 15px;
-        color: $lightGray;
-      }
-
-      &-input {
-        width: 100%;
-        padding: 16px;
-        font-family: Roboto, Arial, sans-serif;
-        font-size: 14px;
-        line-height: 20px;
-        color: #27282a;
-        border: none;
-        border-radius: $controlsBorderRadius;
-        background: $platinum;
-
-        &:focus-visible {
-          outline: 1px solid $primaryColor;
-        }
-      }
     }
 
     &-phone {
       margin-bottom: 16px;
-
-      &-title {
-        margin-bottom: 5px;
-        font-family: Roboto, Arial, sans-serif;
-        font-size: 12px;
-        line-height: 15px;
-        color: $lightGray;
-      }
-
-      &-input {
-        width: 100%;
-        padding: 16px;
-        font-family: Roboto, Arial, sans-serif;
-        font-size: 14px;
-        line-height: 20px;
-        color: #27282a;
-        border: none;
-        border-radius: $controlsBorderRadius;
-        background: $platinum;
-
-        &:focus-visible {
-          outline: 1px solid $primaryColor;
-        }
-      }
     }
   }
 
