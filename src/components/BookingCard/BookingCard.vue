@@ -10,6 +10,8 @@ type Props = {
 }
 
 defineProps<Props>()
+
+const emit = defineEmits(['openModal'])
 </script>
 
 <template>
@@ -22,7 +24,7 @@ defineProps<Props>()
       </li>
     </ul>
     <div class="booking-card__buttons">
-      <Button :type="'button'" :text="'Забронировать'" />
+      <Button :type="'button'" :text="'Забронировать'" @clicked="emit('openModal', true)" />
       <Button :type="'button'" :text="'Посмотреть галерею'" :withoutFill="true" />
     </div>
   </div>

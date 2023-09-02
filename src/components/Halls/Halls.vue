@@ -26,6 +26,8 @@ const HALLS = [
 ]
 
 const currentHallOptions = HALLS.find((hall) => hall.text === currentHall.value)?.options
+
+const emit = defineEmits(['openModal'])
 </script>
 
 <template>
@@ -45,7 +47,7 @@ const currentHallOptions = HALLS.find((hall) => hall.text === currentHall.value)
     <div class="halls__hall">
       <img class="halls__hall-img" src="@/assets/img/hall-plan-1.jpg" />
       <div class="halls__card">
-        <BookingCard :options="currentHallOptions" />
+        <BookingCard :options="currentHallOptions" @open-modal="emit('openModal', true)" />
       </div>
     </div>
   </section>
