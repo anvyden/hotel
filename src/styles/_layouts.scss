@@ -1,11 +1,14 @@
-// @import '@/styles/_vars.scss';
 @import '@/styles/_mixins.scss';
 
 .container {
   max-width: rem(1588);
   margin: 0 auto;
 
-  @include desktop {
+  @include large-desktop {
     padding: 0 rem(20);
+  }
+
+  @include mobile {
+    padding: 0;
   }
 }

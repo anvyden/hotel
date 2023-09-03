@@ -10,7 +10,7 @@ const isModalVisible = ref(false)
 </script>
 
 <template>
-  <Header />
+  <Header @open-modal="isModalVisible = true" />
   <main class="main">
     <div class="container">
       <div class="main__quiz">
@@ -32,6 +32,10 @@ const isModalVisible = ref(false)
 
 .main {
   padding: rem(16) 0 rem(32) 0;
+
+  @include mobile {
+    padding: 18px 0 22px 0;
+  }
 
   &__quiz {
     margin-bottom: rem(25);

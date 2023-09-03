@@ -5,6 +5,7 @@ type Props = {
   text: string
   withArrow?: boolean
   withoutFill?: boolean
+  size?: 'large'
 }
 
 defineProps<Props>()
@@ -16,7 +17,8 @@ const emit = defineEmits(['clicked'])
     class="button"
     :class="{
       'button--with-arrow': withArrow,
-      'button--without-fill': withoutFill
+      'button--without-fill': withoutFill,
+      'button--size-large': size === 'large'
     }"
     @click="emit('clicked')"
   >
@@ -32,7 +34,8 @@ const emit = defineEmits(['clicked'])
 .button {
   display: flex;
   align-items: center;
-  gap: rem(16);
+  justify-content: center;
+  gap: 16px;
   padding: rem(14) rem(32);
   border: none;
   border-radius: $controlsBorderRadius;
@@ -43,14 +46,35 @@ const emit = defineEmits(['clicked'])
 
   color: $white;
 
+  @include tablet {
+    padding: 8px 16px;
+  }
+
   &--with-arrow {
     padding: rem(14) rem(24) rem(14) rem(32);
+
+    @include tablet {
+      padding: 14px 24px 14px 32px;
+    }
   }
 
   &--without-fill {
     background: $white;
     border: 2px solid $secondaryColor;
     color: $secondaryColor;
+  }
+
+  &--size-large {
+    @include small-desktop {
+      font-size: rem(15);
+      line-height: rem(20);
+    }
+
+    @include tablet {
+      font-size: 15px;
+      line-height: 20px;
+      padding: 15px 0;
+    }
   }
 }
 </style>

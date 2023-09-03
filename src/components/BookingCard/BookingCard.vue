@@ -24,8 +24,13 @@ const emit = defineEmits(['openModal'])
       </li>
     </ul>
     <div class="booking-card__buttons">
-      <Button :type="'button'" :text="'Забронировать'" @clicked="emit('openModal', true)" />
-      <Button :type="'button'" :text="'Посмотреть галерею'" :withoutFill="true" />
+      <Button
+        :type="'button'"
+        :text="'Забронировать'"
+        @clicked="emit('openModal', true)"
+        :size="'large'"
+      />
+      <Button :type="'button'" :text="'Посмотреть галерею'" :withoutFill="true" :size="'large'" />
     </div>
   </div>
 </template>
@@ -40,10 +45,18 @@ const emit = defineEmits(['openModal'])
   box-shadow: $mainBoxShadow;
   border-radius: $mainBorderRadius;
 
+  @include tablet {
+    padding: 22px 16px 24px 16px;
+  }
+
   &__title {
     margin-bottom: rem(30);
 
     @include font-h3;
+
+    @include mobile {
+      margin-bottom: 20px;
+    }
   }
 
   &__hall {
@@ -56,6 +69,11 @@ const emit = defineEmits(['openModal'])
       display: flex;
       gap: rem(40);
       padding: 8px 0;
+
+      @include mobile {
+        font-size: 14px;
+        line-height: 20px;
+      }
 
       &:first-child {
         padding-top: 0;
@@ -72,11 +90,19 @@ const emit = defineEmits(['openModal'])
       &-name {
         flex-basis: 39%;
         color: $lightGray;
+
+        @include mobile {
+          flex-basis: 41%;
+        }
       }
 
       &-value {
         flex-basis: 61%;
         color: $primaryColor;
+
+        @include mobile {
+          flex-basis: 59%;
+        }
       }
     }
   }
@@ -84,6 +110,11 @@ const emit = defineEmits(['openModal'])
   &__buttons {
     display: flex;
     gap: rem(15);
+
+    @include tablet {
+      flex-direction: column;
+      gap: 16px;
+    }
   }
 }
 </style>

@@ -45,16 +45,30 @@ import { FOOTER_SOCIALS } from './constants'
   background: $gray;
   border-radius: 20px 20px 0px 0px;
 
+  @include mobile {
+    padding: 40px 0 20px 36px;
+  }
+
   &__content {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: rem(41);
+
+    @include mobile {
+      flex-direction: column;
+      align-items: start;
+      margin-bottom: 60px;
+    }
   }
 
   &__logo {
     &-link {
       cursor: pointer;
+    }
+
+    @include mobile {
+      margin-bottom: 35px;
     }
   }
 
@@ -67,12 +81,22 @@ import { FOOTER_SOCIALS } from './constants'
       @include font-contacts;
 
       color: $white;
+
+      @include mobile {
+        margin-bottom: 16px;
+        font-size: 20px;
+        line-height: 24px;
+      }
     }
 
     &-socials {
       display: flex;
       gap: rem(20);
       list-style-type: none;
+
+      @include mobile {
+        gap: 20px;
+      }
     }
   }
 
@@ -81,6 +105,11 @@ import { FOOTER_SOCIALS } from './constants'
       font-size: rem(14);
       line-height: rem(20);
       color: $white;
+
+      @include mobile {
+        font-size: 14px;
+        line-height: 20px;
+      }
     }
   }
 }

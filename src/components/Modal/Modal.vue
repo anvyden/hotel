@@ -87,6 +87,11 @@ const emit = defineEmits(['closeModal'])
     background: $white;
     border-radius: $mainBorderRadius;
     box-shadow: $mainBoxShadow;
+
+    @include small-tablet {
+      flex-direction: column;
+      padding: 20px 40px 20px 30px;
+    }
   }
 
   &__info {
@@ -94,6 +99,10 @@ const emit = defineEmits(['closeModal'])
     flex-direction: column;
     justify-content: space-between;
     flex-basis: 58%;
+
+    @include small-tablet {
+      margin-bottom: 20px;
+    }
   }
 
   &__heading {
@@ -110,6 +119,14 @@ const emit = defineEmits(['closeModal'])
 
   &__subtitle {
     color: $lightGray;
+
+    @include small-tablet {
+      margin-bottom: 20px;
+    }
+
+    @include mobile {
+      line-height: 15px;
+    }
   }
 
   &__privacy {
@@ -118,6 +135,10 @@ const emit = defineEmits(['closeModal'])
     font-size: 12px;
     line-height: 15px;
     color: $lightGray;
+
+    @include small-tablet {
+      max-width: 100%;
+    }
 
     &-link {
       color: $lightGray;

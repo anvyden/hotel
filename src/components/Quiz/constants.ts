@@ -21,7 +21,7 @@ const QUIZ_QUESTIONS = [
     id: 'question_4',
     questionNumber: 4,
     question: 'Количество гостей',
-    answers: ['444-555', '555-666', '666-777', '777-888', '888-999']
+    answers: ['44-55', '55-66', '66-77', '77-88', '88-99']
   },
   {
     id: 'question_5',

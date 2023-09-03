@@ -52,6 +52,11 @@
   font-weight: 700;
   line-height: rem(48);
   color: $primaryColor;
+
+  @include mobile {
+    font-size: 20px;
+    line-height: 28px;
+  }
 }
 
 @mixin font-h3() {
@@ -60,6 +65,11 @@
   font-weight: 700;
   line-height: rem(32);
   color: $primaryColor;
+
+  @include mobile {
+    font-size: 20px;
+    line-height: 28px;
+  }
 }
 
 @mixin font-h4() {
@@ -70,9 +80,9 @@
 
 @mixin font-roboto() {
   font-family: Roboto, Arial, sans-serif;
-  font-size: rem(15);
+  font-size: 15px;
   font-weight: 400;
-  line-height: rem(20);
+  line-height: 20px;
   color: $secondaryColor;
 }
 

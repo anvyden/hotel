@@ -37,7 +37,8 @@ const emit = defineEmits(['selected'])
     padding: rem(15) rem(24) rem(15) rem(8);
   }
 
-  @include small-desktop {
+  @include mobile {
+    padding: 13px 24px 13px 10px;
   }
 
   &__input {
@@ -65,6 +66,11 @@ const emit = defineEmits(['selected'])
 
     color: $middleGray;
 
+    @include mobile {
+      font-size: 14px;
+      line-height: 20px;
+    }
+
     &::before {
       content: '';
       position: absolute;
@@ -75,6 +81,10 @@ const emit = defineEmits(['selected'])
       height: 16px;
       border: 2px solid $lightGray;
       border-radius: 50%;
+
+      @include mobile {
+        left: 12px;
+      }
     }
 
     &::after {
@@ -88,6 +98,10 @@ const emit = defineEmits(['selected'])
       height: 6px;
       background: $secondaryColor;
       border-radius: 50%;
+
+      @include mobile {
+        left: 17px;
+      }
     }
   }
 }

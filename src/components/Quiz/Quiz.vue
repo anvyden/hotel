@@ -7,9 +7,16 @@ import { QUIZ_QUESTIONS } from './constants'
 const currentQuestion = ref(QUIZ_QUESTIONS[0])
 const selectedAnswer = ref(QUIZ_QUESTIONS[0].answers[0])
 const quizCompeleted = ref(false)
+const quizIsVisible = ref(false)
 
-const changeSelectedAnswer = (answers: string[], currentAnswer: string) => {
+const changeSelectedAnswer = (answers: string[], currentAnswer?: string) => {
   return answers.find((answer) => answer === currentAnswer) || selectedAnswer.value
+}
+
+const next = () => {
+  const nextQuestion = QUIZ_QUESTIONS[currentQuestion.value.questionNumber - 1 + 1]
+  selectedAnswer.value = nextQuestion.answers[0]
+  return nextQuestion
 }
 </script>
 
@@ -17,10 +24,11 @@ const changeSelectedAnswer = (answers: string[], currentAnswer: string) => {
   <div class="quiz">
     <h1 class="quiz__title">Рассчитайте стоимость вашего банкета</h1>
     <p class="quiz__description">
-      Ответьте на {{ QUIZ_QUESTIONS.length }} вопросов и получите горку из шампанского в подарок
+      Ответьте на {{ QUIZ_QUESTIONS.length }} вопросов и получите горку из&nbsp;шампанского в
+      подарок
     </p>
     <div class="quiz__content">
-      <div class="quiz__quiz">
+      <div class="quiz__quiz" :class="{ 'quiz__quiz--visible': quizIsVisible }">
         <div v-if="!quizCompeleted" class="quiz__quiz-content">
           <div class="quiz__quiz-counter">
             <p class="quiz__quiz-counter-text">
@@ -59,7 +67,7 @@ const changeSelectedAnswer = (answers: string[], currentAnswer: string) => {
               :type="'button'"
               :text="'Следующий вопрос'"
               :with-arrow="true"
-              @clicked="currentQuestion = QUIZ_QUESTIONS[currentQuestion.questionNumber - 1 + 1]"
+              @clicked="currentQuestion = next()"
             />
             <Button v-else :type="'button'" :text="'Завершить'" @clicked="quizCompeleted = true" />
           </div>
@@ -68,18 +76,23 @@ const changeSelectedAnswer = (answers: string[], currentAnswer: string) => {
           <p class="quiz__completed-text">Опрос завершен</p>
         </div>
       </div>
-      <div class="quiz__additional-block">
+      <div
+        class="quiz__additional-block"
+        :class="{ 'quiz__additional-block--hidden': quizIsVisible }"
+      >
         <img class="quiz__additional-block-img" src="@/assets/img/bottle.png" alt="bottle" />
         <h4 class="quiz__additional-block-text">
           Ответьте на {{ QUIZ_QUESTIONS.length }} вопросов и получите горку из&nbsp; шампанского в
           подарок
         </h4>
-        <Button
-          :type="'button'"
-          :text="'Начать'"
-          :with-arrow="true"
-          :class="'quiz__additional-block-button'"
-        />
+        <div class="quiz__additional-block-button">
+          <Button
+            :type="'button'"
+            :text="'Начать'"
+            :with-arrow="true"
+            @clicked="quizIsVisible = true"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -94,10 +107,27 @@ const changeSelectedAnswer = (answers: string[], currentAnswer: string) => {
     margin-bottom: rem(20);
 
     @include font-h2;
+
+    @include mobile {
+      margin: 0 16px 8px 16px;
+    }
   }
 
   &__description {
     display: none;
+
+    font-size: 14px;
+    line-height: 20px;
+    color: $middleGray;
+
+    @include tablet {
+      display: block;
+      margin-bottom: 40px;
+    }
+
+    @include mobile {
+      margin: 0 16px 24px 16px;
+    }
   }
 
   &__content {
@@ -115,16 +145,33 @@ const changeSelectedAnswer = (answers: string[], currentAnswer: string) => {
       display: none;
     }
 
+    &--visible {
+      display: block;
+    }
+
     &-content {
       padding: rem(32) rem(40);
+
+      @include mobile {
+        padding: 29px 18px 32px 16px;
+      }
     }
 
     &-counter {
       margin-bottom: rem(33);
 
+      @include mobile {
+      }
+
       &-text {
         color: $gray;
         margin-bottom: rem(8);
+
+        @include mobile {
+          margin-bottom: 15px;
+          font-size: 14px;
+          line-height: 20px;
+        }
       }
 
       &-progress {
@@ -150,6 +197,10 @@ const changeSelectedAnswer = (answers: string[], currentAnswer: string) => {
     &-question {
       margin-bottom: rem(40);
 
+      @include mobile {
+        margin-bottom: 25px;
+      }
+
       &-answers-list {
         display: flex;
         gap: rem(17);
@@ -157,6 +208,11 @@ const changeSelectedAnswer = (answers: string[], currentAnswer: string) => {
 
         @include small-desktop {
           flex-wrap: wrap;
+        }
+
+        @include mobile {
+          column-gap: 9px;
+          row-gap: 16px;
         }
       }
 
@@ -169,6 +225,12 @@ const changeSelectedAnswer = (answers: string[], currentAnswer: string) => {
         color: $gray;
 
         @include font-h4;
+
+        @include mobile {
+          margin-bottom: 16px;
+          font-size: 16px;
+          line-height: 28px;
+        }
       }
     }
 
@@ -212,11 +274,24 @@ const changeSelectedAnswer = (answers: string[], currentAnswer: string) => {
     border-radius: $mainBorderRadius;
     background: url('@/assets/img/quiz-background.png') no-repeat center;
 
+    &--hidden {
+      display: none;
+    }
+
+    @include tablet {
+      max-width: rem(870);
+      padding: 198px 195px 30px 16px;
+    }
+
     &-img {
       position: absolute;
       right: 0;
       bottom: 0;
       max-height: 110%;
+
+      @include mobile {
+        max-height: 105%;
+      }
     }
 
     &-text {
@@ -226,10 +301,18 @@ const changeSelectedAnswer = (answers: string[], currentAnswer: string) => {
       z-index: 1;
 
       @include font-h4;
+
+      @include tablet {
+        display: none;
+      }
     }
 
     &-button {
       display: none;
+
+      @include tablet {
+        display: block;
+      }
     }
   }
 }

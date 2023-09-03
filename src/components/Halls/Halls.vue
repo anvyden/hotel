@@ -1,29 +1,7 @@
 <script lang="ts" setup>
 import BookingCard from '../BookingCard/BookingCard.vue'
 import { ref } from 'vue'
-
-// const currentHall = ref('Зал первый')
-
-const HALLS = [
-  {
-    id: 'hall_1',
-    text: 'Зал первый',
-    options: {
-      площадь: '160 кв. метров',
-      вместимость: 'до 100 человек',
-      фуршет: 'до 200 человек'
-    }
-  },
-  {
-    id: 'hall_2',
-    text: 'Зал второй',
-    options: {
-      площадь: '200 кв. метров',
-      вместимость: 'до 150 человек',
-      фуршет: 'до 300 человек'
-    }
-  }
-]
+import { HALLS } from './constants'
 
 const currentHall = ref(HALLS[0])
 
@@ -67,12 +45,21 @@ const findHall = ({ target }: MouseEvent) => {
     margin-bottom: rem(24);
 
     @include font-h2;
+
+    @include tablet {
+      text-align: center;
+      margin-bottom: rem(25);
+    }
   }
 
   &__pagination {
     display: flex;
     gap: 2px;
     list-style-type: none;
+
+    @include tablet {
+      justify-content: center;
+    }
 
     &-item {
       padding: 16px 32px;
@@ -102,6 +89,18 @@ const findHall = ({ target }: MouseEvent) => {
 
     @include large-tablet {
       padding-left: rem(56);
+    }
+
+    @include tablet {
+      flex-direction: column;
+      gap: 16px;
+      padding: 17px 16px 24px 16px;
+    }
+
+    &-img {
+      @include tablet {
+        max-width: 118px;
+      }
     }
   }
 }
