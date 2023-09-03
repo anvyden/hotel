@@ -1,7 +1,11 @@
-@import '@/styles/_vars.scss';
+// @import '@/styles/_vars.scss';
 @import '@/styles/_mixins.scss';
 
 .container {
   max-width: rem(1588);
   margin: 0 auto;
+
+  @include desktop {
+    padding: 0 rem(20);
+  }
 }

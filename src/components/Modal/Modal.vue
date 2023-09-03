@@ -142,9 +142,9 @@ const emit = defineEmits(['closeModal'])
       position: absolute;
       top: 16px;
       right: 16px;
-
       background: none;
       border: none;
+      cursor: pointer;
     }
   }
 }

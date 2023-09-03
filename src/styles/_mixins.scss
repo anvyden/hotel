@@ -1,37 +1,85 @@
+@mixin large-desktop {
+  @media (max-width: (1720px)) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (max-width: (1520px)) {
+    @content;
+  }
+}
+
+@mixin small-desktop {
+  @media (max-width: (1280px)) {
+    @content;
+  }
+}
+
+@mixin large-tablet {
+  @media (max-width: (1024px)) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: (768px)) {
+    @content;
+  }
+}
+
+@mixin small-tablet {
+  @media (max-width: (600px)) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: (480px)) {
+    @content;
+  }
+}
+
+@mixin small-mobile {
+  @media (max-width: (320px)) {
+    @content;
+  }
+}
+
 @mixin font-h2() {
   font-family: P052, Arial, sans-serif;
-  font-size: 40px;
+  font-size: rem(40);
   font-weight: 700;
-  line-height: 48px;
+  line-height: rem(48);
   color: $primaryColor;
 }
 
 @mixin font-h3() {
   font-family: P052, Arial, sans-serif;
-  font-size: 32px;
+  font-size: rem(32);
   font-weight: 700;
-  line-height: 32px;
+  line-height: rem(32);
   color: $primaryColor;
 }
 
 @mixin font-h4() {
-  font-size: 24px;
+  font-size: rem(24);
   font-weight: 400;
-  line-height: 32px;
+  line-height: rem(32);
 }
 
 @mixin font-roboto() {
   font-family: Roboto, Arial, sans-serif;
-  font-size: 15px;
+  font-size: rem(15);
   font-weight: 400;
-  line-height: 20px;
+  line-height: rem(20);
   color: $secondaryColor;
 }
 
 @mixin font-contacts() {
-  font-size: 20px;
+  font-size: rem(20);
   font-weight: 400;
-  line-height: 24px;
+  line-height: rem(24);
   color: $gray;
 }
 

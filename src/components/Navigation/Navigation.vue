@@ -31,6 +31,14 @@ const activeLink = ref(
 .navigation {
   padding: 0 rem(135);
 
+  @include large-tablet {
+    padding: 0 rem(20);
+  }
+
+  @include tablet {
+    display: none;
+  }
+
   &__list {
     display: flex;
     justify-content: space-between;

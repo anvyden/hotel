@@ -99,6 +99,10 @@ const findHall = ({ target }: MouseEvent) => {
     padding: rem(11) rem(56) rem(11) rem(231);
     background: $lightPlatinum;
     border-radius: 0px 16px 16px 16px;
+
+    @include large-tablet {
+      padding-left: rem(56);
+    }
   }
 }
 </style>

@@ -23,7 +23,7 @@ import { FOOTER_SOCIALS } from './constants'
               :key="name"
               :has-gray-fill="true"
               :has-rounded-borders="true"
-              :size="'small'"
+              :size="'large'"
             />
           </ul>
         </div>

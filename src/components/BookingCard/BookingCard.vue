@@ -48,7 +48,7 @@ const emit = defineEmits(['openModal'])
 
   &__hall {
     &-options {
-      margin-bottom: rem(31);
+      margin-bottom: rem(32);
       list-style-type: none;
     }
 

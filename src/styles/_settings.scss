@@ -13,7 +13,15 @@ body {
   font-size: $mainFontSize;
   font-weight: 400;
   color: $primaryColor;
-  line-height: 28px;
+  line-height: rem(28);
+
+  @include desktop {
+    font-size: 14px;
+  }
+
+  @include small-desktop {
+    font-size: 12px;
+  }
 }
 
 #root {

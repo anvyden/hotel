@@ -5,7 +5,12 @@ import { ref } from 'vue'
 import { QUIZ_QUESTIONS } from './constants'
 
 const currentQuestion = ref(QUIZ_QUESTIONS[0])
+const selectedAnswer = ref(QUIZ_QUESTIONS[0].answers[0])
 const quizCompeleted = ref(false)
+
+const changeSelectedAnswer = (answers: string[], currentAnswer: string) => {
+  return answers.find((answer) => answer === currentAnswer) || selectedAnswer.value
+}
 </script>
 
 <template>
@@ -42,7 +47,8 @@ const quizCompeleted = ref(false)
                 <Radio
                   :name="currentQuestion.id"
                   :text="answer"
-                  :is-checked="currentQuestion.answers.indexOf(answer) === 0"
+                  :is-checked="answer === selectedAnswer"
+                  @selected="selectedAnswer = changeSelectedAnswer(currentQuestion.answers, $event)"
                 />
               </li>
             </ul>
@@ -63,7 +69,7 @@ const quizCompeleted = ref(false)
         </div>
       </div>
       <div class="quiz__additional-block">
-        <img class="quiz__additional-block-img" src="@/assets/img/bottle.png" />
+        <img class="quiz__additional-block-img" src="@/assets/img/bottle.png" alt="bottle" />
         <h4 class="quiz__additional-block-text">
           Ответьте на {{ QUIZ_QUESTIONS.length }} вопросов и получите горку из&nbsp; шампанского в
           подарок
@@ -105,6 +111,10 @@ const quizCompeleted = ref(false)
     border-radius: $mainBorderRadius;
     background: $lightPlatinum;
 
+    @include tablet {
+      display: none;
+    }
+
     &-content {
       padding: rem(32) rem(40);
     }
@@ -144,10 +154,18 @@ const quizCompeleted = ref(false)
         display: flex;
         gap: rem(17);
         list-style-type: none;
+
+        @include small-desktop {
+          flex-wrap: wrap;
+        }
+      }
+
+      &-answer {
+        display: flex;
       }
 
       &-text {
-        margin-bottom: rem(35);
+        margin-bottom: rem(23);
         color: $gray;
 
         @include font-h4;
@@ -156,7 +174,7 @@ const quizCompeleted = ref(false)
 
     &-controls {
       position: relative;
-      padding-top: rem(45);
+      padding-top: rem(33);
 
       &::before {
         content: '';
@@ -191,12 +209,14 @@ const quizCompeleted = ref(false)
     position: relative;
     width: 100%;
     max-width: rem(650);
+    border-radius: $mainBorderRadius;
     background: url('@/assets/img/quiz-background.png') no-repeat center;
 
     &-img {
       position: absolute;
-      top: -29px;
       right: 0;
+      bottom: 0;
+      max-height: 110%;
     }
 
     &-text {

@@ -6,10 +6,12 @@ type Props = {
 }
 
 defineProps<Props>()
+
+const emit = defineEmits(['selected'])
 </script>
 
 <template>
-  <label class="radio">
+  <label class="radio" @click="emit('selected', text)" :class="{ 'radio--selected': isChecked }">
     <input class="radio__input" type="radio" :name="name" :checked="isChecked" />
     <span class="radio__text">{{ text }}</span>
   </label>
@@ -21,12 +23,22 @@ defineProps<Props>()
 
 .radio {
   position: relative;
-  padding: 15px 32px 15px 12px;
-  // border: 1px solid $secondaryColor;
+  padding: rem(12) rem(32) rem(12) rem(12);
   border-radius: $controlsBorderRadius;
   background: $white;
   box-shadow: $mainBoxShadow;
   cursor: pointer;
+
+  &--selected {
+    outline: 1px solid $secondaryColor;
+  }
+
+  @include desktop {
+    padding: rem(15) rem(24) rem(15) rem(8);
+  }
+
+  @include small-desktop {
+  }
 
   &__input {
     position: absolute;
