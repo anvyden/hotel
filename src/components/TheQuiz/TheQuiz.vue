@@ -9,11 +9,11 @@ const selectedAnswer = ref(QUIZ_QUESTIONS[0].answers[0])
 const quizCompeleted = ref(false)
 const quizIsVisible = ref(false)
 
-const changeSelectedAnswer = (answers: string[], currentAnswer?: string) => {
+const getSelectedAnswer = (answers: string[], currentAnswer?: string) => {
   return answers.find((answer) => answer === currentAnswer) || selectedAnswer.value
 }
 
-const next = () => {
+const getNextQuestion = () => {
   const nextQuestion = QUIZ_QUESTIONS[currentQuestion.value.questionNumber - 1 + 1]
   selectedAnswer.value = nextQuestion.answers[0]
   return nextQuestion
@@ -56,7 +56,7 @@ const next = () => {
                   :name="currentQuestion.id"
                   :text="answer"
                   :is-checked="answer === selectedAnswer"
-                  @selected="selectedAnswer = changeSelectedAnswer(currentQuestion.answers, $event)"
+                  @selected="selectedAnswer = getSelectedAnswer(currentQuestion.answers, $event)"
                 />
               </li>
             </ul>
@@ -67,7 +67,7 @@ const next = () => {
               :type="'button'"
               :text="'Следующий вопрос'"
               :with-arrow="true"
-              @clicked="currentQuestion = next()"
+              @clicked="currentQuestion = getNextQuestion()"
             />
             <TheButton
               v-else

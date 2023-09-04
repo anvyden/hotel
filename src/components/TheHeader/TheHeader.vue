@@ -6,7 +6,7 @@ import TheNavigation from '../TheNavigation/TheNavigation.vue'
 import TheButton from '../TheButton/TheButton.vue'
 import { HEADER_SOCIALS } from './constants'
 
-const emit = defineEmits(['openModal'])
+const emit = defineEmits(['openModal', 'openBurgerMenu'])
 </script>
 
 <template>
@@ -14,7 +14,7 @@ const emit = defineEmits(['openModal'])
     <div class="container">
       <div class="header__content">
         <div class="header__links">
-          <div class="header__burger-menu">
+          <div class="header__burger-menu" @click="emit('openBurgerMenu')">
             <div class="header__burger-menu-line"></div>
             <div class="header__burger-menu-line"></div>
             <div class="header__burger-menu-line"></div>
@@ -194,6 +194,7 @@ const emit = defineEmits(['openModal'])
       border: none;
       background: none;
       text-decoration: underline;
+      cursor: pointer;
 
       @include font-roboto;
     }
