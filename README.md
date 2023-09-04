@@ -1,6 +1,7 @@
 # Hotel
 
 stack: vue/ts/scss
+
 libs: vue-the-mask
 
 ## Project Setup
