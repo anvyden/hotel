@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import Button from '../Button/Button.vue'
-import Input from '../Input/Input.vue'
+import TheButton from '../TheButton/TheButton.vue'
+import TheInput from '../TheInput/TheInput.vue'
 import IconClose from '../icons/IconClose.vue'
 
 type Props = {
@@ -32,16 +32,17 @@ const emit = defineEmits(['closeModal'])
       <div class="modal__form">
         <form v-on:submit.prevent class="modal__form">
           <div class="modal__form-name">
-            <Input :type="'text'" :title="'Ваше имя'" :placeholder="'Введите ваше имя'" />
+            <TheInput :type="'text'" :title="'Ваше имя'" :placeholder="'Введите ваше имя'" />
           </div>
           <div class="modal__form-phone">
-            <Input
+            <TheInput
               :type="'text'"
               :title="'Ваш номер телефона'"
               :placeholder="'+7 (___) ___-__-__'"
+              :has-phone-mask="true"
             />
           </div>
-          <Button :type="'submit'" :text="'Забронировать'" @click="emit('closeModal', false)" />
+          <TheButton :type="'submit'" :text="'Забронировать'" @click="emit('closeModal', false)" />
         </form>
       </div>
       <button type="submit" class="modal__button-close" @click="emit('closeModal', false)">

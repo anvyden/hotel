@@ -4,6 +4,7 @@ type Props = {
   type?: string
   placeholder?: string
   modelValue?: string
+  hasPhoneMask?: boolean
 }
 
 defineProps<Props>()
@@ -18,11 +19,21 @@ const getValue = ({ target }: Event) => {
   <div class="input">
     <p v-if="title" class="input__title">{{ title }}</p>
     <input
+      v-if="!hasPhoneMask"
       class="input__input"
       :type="type || 'text'"
       :placeholder="placeholder"
       :value="modelValue"
       @input="$emit('update:modelValue', getValue($event))"
+    />
+    <input
+      v-else
+      class="input__input"
+      :type="type || 'text'"
+      :placeholder="placeholder"
+      :value="modelValue"
+      @input="$emit('update:modelValue', getValue($event))"
+      v-mask="'+7 (###) ##-##-##'"
     />
   </div>
 </template>

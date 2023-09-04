@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import Radio from '../Radio/Radio.vue'
-import Button from '../Button/Button.vue'
+import TheRadio from '../TheRadio/TheRadio.vue'
+import TheButton from '../TheButton/TheButton.vue'
 import { ref } from 'vue'
 import { QUIZ_QUESTIONS } from './constants'
 
@@ -52,7 +52,7 @@ const next = () => {
                 class="quiz__quiz-question-answer"
                 :key="answer"
               >
-                <Radio
+                <TheRadio
                   :name="currentQuestion.id"
                   :text="answer"
                   :is-checked="answer === selectedAnswer"
@@ -62,14 +62,19 @@ const next = () => {
             </ul>
           </div>
           <div class="quiz__quiz-controls">
-            <Button
+            <TheButton
               v-if="currentQuestion.questionNumber !== QUIZ_QUESTIONS.length"
               :type="'button'"
               :text="'Следующий вопрос'"
               :with-arrow="true"
               @clicked="currentQuestion = next()"
             />
-            <Button v-else :type="'button'" :text="'Завершить'" @clicked="quizCompeleted = true" />
+            <TheButton
+              v-else
+              :type="'button'"
+              :text="'Завершить'"
+              @clicked="quizCompeleted = true"
+            />
           </div>
         </div>
         <div v-else class="quiz__compeleted">
@@ -86,7 +91,7 @@ const next = () => {
           подарок
         </h4>
         <div class="quiz__additional-block-button">
-          <Button
+          <TheButton
             :type="'button'"
             :text="'Начать'"
             :with-arrow="true"

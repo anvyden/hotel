@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import Logo from '../Logo/Logo.vue'
+import TheLogo from '../TheLogo/TheLogo.vue'
 import IconAddress from '../icons/IconAddress.vue'
-import Social from '../Social/Social.vue'
-import Navigation from '../Navigation/Navigation.vue'
-import Button from '../Button/Button.vue'
+import TheSocial from '../TheSocial/TheSocial.vue'
+import TheNavigation from '../TheNavigation/TheNavigation.vue'
+import TheButton from '../TheButton/TheButton.vue'
 import { HEADER_SOCIALS } from './constants'
 
 const emit = defineEmits(['openModal'])
@@ -21,12 +21,12 @@ const emit = defineEmits(['openModal'])
           </div>
           <div class="header__logo">
             <a class="header__logo-link" href="#" rel="noopener">
-              <Logo :color="'#18191b'" />
+              <TheLogo :color="'#18191b'" />
             </a>
           </div>
           <div class="header__logo-mobile">
             <a class="header__logo-link" href="#" rel="noopener">
-              <Logo :color="'#18191b'" :mobile-logo="true" />
+              <TheLogo :color="'#18191b'" :mobile-logo="true" />
             </a>
           </div>
         </div>
@@ -38,7 +38,7 @@ const emit = defineEmits(['openModal'])
             <p class="header__address-text">г. Ставрополь, ул.&nbsp;Пушкина 272</p>
           </div>
           <ul class="header__socials">
-            <Social
+            <TheSocial
               v-for="{ link, name, icon } in HEADER_SOCIALS"
               :link="link"
               :icon="icon"
@@ -53,11 +53,11 @@ const emit = defineEmits(['openModal'])
           </div>
         </div>
         <div class="header__call-button">
-          <Button :text="'Позвонить'" @clicked="emit('openModal', true)" />
+          <TheButton :text="'Позвонить'" @clicked="emit('openModal', true)" />
         </div>
       </div>
       <div class="header__navigation">
-        <Navigation />
+        <TheNavigation />
       </div>
     </div>
   </header>

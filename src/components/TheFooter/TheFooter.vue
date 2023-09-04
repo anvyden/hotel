@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import Logo from '../Logo/Logo.vue'
-import Social from '../Social/Social.vue'
+import TheLogo from '../TheLogo/TheLogo.vue'
+import TheSocial from '../TheSocial/TheSocial.vue'
 import { FOOTER_SOCIALS } from './constants'
 </script>
 
@@ -10,13 +10,13 @@ import { FOOTER_SOCIALS } from './constants'
       <div class="footer__content">
         <div class="footer__logo">
           <a class="footer__logo-link" href="#" rel="noopener">
-            <Logo :color="'#fff'" />
+            <TheLogo :color="'#fff'" />
           </a>
         </div>
         <div class="footer__contacts">
           <p class="footer__contacts-text">Мы в соц. сетях</p>
           <ul class="footer__contacts-socials">
-            <Social
+            <TheSocial
               v-for="{ link, name, icon } in FOOTER_SOCIALS"
               :link="link"
               :icon="icon"

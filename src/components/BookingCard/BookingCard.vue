@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import Button from '../Button/Button.vue'
+import TheButton from '../TheButton/TheButton.vue'
 
 type Props = {
   options: {
@@ -24,13 +24,18 @@ const emit = defineEmits(['openModal'])
       </li>
     </ul>
     <div class="booking-card__buttons">
-      <Button
+      <TheButton
         :type="'button'"
         :text="'Забронировать'"
         @clicked="emit('openModal', true)"
         :size="'large'"
       />
-      <Button :type="'button'" :text="'Посмотреть галерею'" :withoutFill="true" :size="'large'" />
+      <TheButton
+        :type="'button'"
+        :text="'Посмотреть галерею'"
+        :withoutFill="true"
+        :size="'large'"
+      />
     </div>
   </div>
 </template>
